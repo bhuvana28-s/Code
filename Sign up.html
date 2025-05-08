@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Login</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .container { max-width: 400px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 8px 0; border-radius: 4px; border: 1px solid #ddd; }
+        button { width: 100%; padding: 10px; margin: 8px 0; border: none; border-radius: 4px; background-color: #4285f4; color: #fff; cursor: pointer; }
+        button:hover { background-color: #357ae8; }
+        a { color: #4285f4; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container" id="login">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email" id="loginEmail" required>
+        <input type="password" placeholder="Password" id="loginPassword" required>
+        <button onclick="validateLogin()">Login</button>
+        <p>Don't have an account? <a href="#" onclick="goToSignup()">Sign Up</a></p>
+    </div>
+
+    <div class="container" id="signup" style="display:none;">
+        <h2>Sign Up</h2>
+        <input type="text" placeholder="Full Name" id="signupName" required>
+        <input type="text" placeholder="Username" id="signupUsername" required>
+        <input type="email" placeholder="Email" id="signupEmail" required>
+        <input type="password" placeholder="Password" id="signupPassword" required>
+        <button onclick="validateSignup()">Sign Up</button>
+        <p>Already have an account? <a href="#" onclick="goToLogin()">Go to Login</a></p>
+    </div>
+
+    <script>
+        function goToLogin() {
+            document.getElementById('signup').style.display = 'none';
+            document.getElementById('login').style.display = 'block';
+        }
+
+        function goToSignup() {
+            document.getElementById('login').style.display = 'none';
+            document.getElementById('signup').style.display = 'block';
+        }
+
+        function validateSignup() {
+            const name = document.getElementById('signupName').value;
+            const username = document.getElementById('signupUsername').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            if (!name || !username || !email || !password) {
+                alert('All fields are required for signup.');
+                return;
+            }
+            alert('Signed up successfully!');
+            goToLogin();
+        }
+
+        function validateLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) {
+                alert('Both email and password are required for login.');
+                return;
+            }
+            alert('Logged in successfully!');
+        }
+    </script>
+</body>
+</html>
